@@ -93,6 +93,7 @@ def get_holders_by_balance(contract,starting_block,min_balance,key):
 	for i in initiators:
 		iteration += 1
 		balance = get_token_balance(contract,i,key)
+		balance = balance/(10**9)
 		if balance > min_balance:
 			holders.append([i,balance])
 		printProgressBar(iteration, len(initiators), prefix = 'Progress:', suffix = 'Complete', length = 50)
@@ -101,8 +102,8 @@ def get_holders_by_balance(contract,starting_block,min_balance,key):
 
 api_key = keys.api_key
 contract = '0x9f66a7b29c123a1a4461bd1988d0aea0a3bb379b'
-starting_block = '7645807'
-min_balance = 10000
+starting_block = '7904019'
+min_balance = 25000000
 
 print('')
 print('')
@@ -135,7 +136,7 @@ while inp != '':
 	elif inp == 'starting block':
 		starting_block = input('input a new starting block here: ')
 	elif inp == 'min_balance':
-		min_balance = input('input a new minimum balance here: ')
+		min_balance = float(input('input a new minimum balance here: '))
 	else:
 		print('that is not valid, try again')
 	inp = input('type your next command here: ')
